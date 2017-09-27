@@ -1,9 +1,10 @@
 package com.example.matthias.customkeyboardpoc;
 
+import android.content.Context;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
-import android.util.Log;
+import android.os.Vibrator;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
@@ -79,6 +80,10 @@ public class SimpleIME extends InputMethodService implements KeyboardView.OnKeyb
             }
         } else {
             // long press
+
+            Vibrator vrrr = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+            vrrr.vibrate(50);
+
             if(primaryCode < 12 && primaryCode >= 0){
                 char output = keyArray[primaryCode][3];
                 ic.commitText(String.valueOf(output),1);
