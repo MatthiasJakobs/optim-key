@@ -13,7 +13,7 @@ import android.view.inputmethod.InputConnection;
  * Created by Matthias on 14.07.17.
  */
 
-public class SimpleIME extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
+public class OptimKeyIME extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
     private KeyboardView keyboardView;
     private Keyboard keyboard;
@@ -25,6 +25,8 @@ public class SimpleIME extends InputMethodService implements KeyboardView.OnKeyb
     private double stop = System.currentTimeMillis();
 
     private boolean caps = false;
+
+
 
     @Override
     public View onCreateInputView(){
