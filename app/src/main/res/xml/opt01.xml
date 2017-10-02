@@ -11,7 +11,7 @@
         <Key android:codes="1" android:keyLabel="C" android:keyWidth="20%p"/>
         <Key android:codes="7" android:keyLabel="O" android:keyWidth="20%p"/>
         <Key android:codes="6" android:keyLabel="I" android:keyWidth="20%p"/>
-        <Key android:codes="48" android:keyLabel="DEL" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="-5" android:keyLabel="DEL" android:keyWidth="15%p" android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     <Row>
         <Key android:codes="-100" android:keyLabel="rot" android:keyWidth="15%p" android:isModifier="true" android:keyEdgeFlags="left"/>
