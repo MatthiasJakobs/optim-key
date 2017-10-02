@@ -7,4 +7,9 @@
     <color name="keyBackdrop">#d9d9d9</color>
     <color name="keyBackground">#e7e7e7</color>
     <color name="keyTextColor">#313131</color>
+
+    <color name="keyLevel1">#313131</color>
+    <color name="keyLevel2">#ff2600</color>
+    <color name="keyLevel3">#0090ff</color>
+    <color name="keyLevel4">#bababa</color>
 </resources>

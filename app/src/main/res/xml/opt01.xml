@@ -7,26 +7,26 @@
     >
     <Row>
         <Key android:codes="49" android:keyLabel="SHIFT" android:keyWidth="15%p" android:keyEdgeFlags="left"/>
-        <Key android:codes="0" android:keyLabel="R" android:keyWidth="20%p"/>
-        <Key android:codes="1" android:keyLabel="C" android:keyWidth="20%p"/>
-        <Key android:codes="7" android:keyLabel="O" android:keyWidth="20%p"/>
-        <Key android:codes="6" android:keyLabel="I" android:keyWidth="20%p"/>
+        <Key android:codes="0" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="1" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="7" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="6" android:keyLabel="" android:keyWidth="20%p"/>
         <Key android:codes="-5" android:keyLabel="DEL" android:keyWidth="15%p" android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     <Row>
         <Key android:codes="-100" android:keyLabel="rot" android:keyWidth="15%p" android:isModifier="true" android:keyEdgeFlags="left"/>
-        <Key android:codes="2" android:keyLabel="_" android:keyWidth="20%p"/>
-        <Key android:codes="3" android:keyLabel="T" android:keyWidth="20%p"/>
-        <Key android:codes="9" android:keyLabel="H" android:keyWidth="20%p"/>
-        <Key android:codes="8" android:keyLabel="E" android:keyWidth="20%p"/>
+        <Key android:codes="2" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="3" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="9" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="8" android:keyLabel="" android:keyWidth="20%p"/>
         <Key android:codes="-100" android:keyLabel="rot" android:keyWidth="15%p" android:isModifier="true" android:keyEdgeFlags="right"/>
     </Row>
     <Row android:rowEdgeFlags="bottom">
         <Key android:codes="-101" android:keyLabel="blau" android:keyWidth="15%p" android:isModifier="true" android:keyEdgeFlags="left"/>
-        <Key android:codes="4" android:keyLabel="N" android:keyWidth="20%p"/>
-        <Key android:codes="5" android:keyLabel="L" android:keyWidth="20%p"/>
-        <Key android:codes="11" android:keyLabel="U" android:keyWidth="20%p"/>
-        <Key android:codes="10" android:keyLabel="A" android:keyWidth="20%p"/>
+        <Key android:codes="4" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="5" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="11" android:keyLabel="" android:keyWidth="20%p"/>
+        <Key android:codes="10" android:keyLabel="" android:keyWidth="20%p"/>
         <Key android:codes="-101" android:keyLabel="blau" android:keyWidth="15%p" android:isModifier="true" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

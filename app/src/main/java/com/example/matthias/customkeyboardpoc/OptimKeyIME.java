@@ -15,7 +15,7 @@ import android.view.inputmethod.InputConnection;
 
 public class OptimKeyIME extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
-    private KeyboardView keyboardView;
+    private OptimKeyboardView keyboardView;
     private Keyboard keyboard;
 
     private boolean blue = false;
@@ -30,7 +30,7 @@ public class OptimKeyIME extends InputMethodService implements KeyboardView.OnKe
 
     @Override
     public View onCreateInputView(){
-        keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
+        keyboardView = (OptimKeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
         keyboard = new Keyboard(this, R.xml.opt01);
         keyboardView.setKeyboard(keyboard);
         keyboardView.setOnKeyboardActionListener(this);
