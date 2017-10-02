@@ -47,7 +47,7 @@ public class OptimKeyIME extends InputMethodService implements KeyboardView.OnKe
     public void onRelease(int primaryCode) {
         this.stop = System.currentTimeMillis();
         InputConnection ic = getCurrentInputConnection();
-        if(this.stop - this.start < 600){
+        if(this.stop - this.start < 600 || primaryCode == Keyboard.KEYCODE_DELETE){
             // normal press
             switch(primaryCode){
                 case Keyboard.KEYCODE_DELETE :
@@ -68,16 +68,15 @@ public class OptimKeyIME extends InputMethodService implements KeyboardView.OnKe
                     blue = true;
                     break;
                 default:
-                    int modifiers = 0;
+                    char realKey = KeyMapping.LEVEL1.get(primaryCode);
                     if(red){
-                        modifiers = 1;
+                        realKey = KeyMapping.LEVEL2.get(primaryCode);
                     }
                     if(blue){
-                        modifiers = 2;
+                        realKey = KeyMapping.LEVEL3.get(primaryCode);
                     }
                     red = false;
                     blue = false;
-                    char realKey = keyArray[primaryCode][modifiers];
                     ic.commitText(String.valueOf(realKey),1);
             }
         } else {
@@ -87,7 +86,7 @@ public class OptimKeyIME extends InputMethodService implements KeyboardView.OnKe
             vrrr.vibrate(50);
 
             if(primaryCode < 12 && primaryCode >= 0){
-                char output = keyArray[primaryCode][3];
+                char output = KeyMapping.LEVEL4.get(primaryCode);
                 ic.commitText(String.valueOf(output),1);
             }
         }
@@ -96,21 +95,6 @@ public class OptimKeyIME extends InputMethodService implements KeyboardView.OnKe
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
     }
-
-    private char[][] keyArray = {
-            {'r', 'v', 'ü', '\''},
-            {'c', 'y', 'q', '{'},
-            {' ', 'd', 'b', '('},
-            {'t', 'w', 'z', '['},
-            {'n', 'k', 'j', '"'},
-            {'l', '-', '?', '_'},
-            {'i', '.', 'ö', ':'},
-            {'o', 'p', '!', '}'},
-            {'e', 's', 'g', ')'},
-            {'h', 'm', 'ä', ']'},
-            {'a', ',', 'ß', ';'},
-            {'u', 'f', 'x', '/'}
-    };
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
