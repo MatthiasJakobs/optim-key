@@ -53,31 +53,74 @@ public class OptimKeyIME extends InputMethodService implements KeyboardView.OnKe
                 case Keyboard.KEYCODE_DELETE :
                     ic.deleteSurroundingText(1, 0);
                     break;
+
                 case Keyboard.KEYCODE_SHIFT:
                     caps = !caps;
                     keyboard.setShifted(caps);
                     keyboardView.invalidateAllKeys();
                     break;
+
                 case Keyboard.KEYCODE_DONE:
                     ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                     break;
+
                 case -100:
-                    red = true;
+                    if (red) {
+                        // Rot war an und wird wieder ausgeschaltet
+                        red = false;
+                        keyboardView.highlightLevel(1);
+                        keyboardView.invalidateAllKeys();
+                    } else {
+                        // Rot wird eingeschaltet; blau wird ggf. ueberschrieben
+                        red = true;
+                        blue = false;
+                        keyboardView.highlightLevel(2);
+                        keyboardView.invalidateAllKeys();
+                    }
                     break;
+
                 case -101:
-                    blue = true;
+                    if (blue) {
+                        // Blau war an und wird wieder ausgeschaltet
+                        blue = false;
+                        keyboardView.highlightLevel(1);
+                        keyboardView.invalidateAllKeys();
+                    } else {
+                        // Blau wird eingeschaltet; rot wird ggf. ueberschrieben
+                        blue = true;
+                        red = false;
+                        keyboardView.highlightLevel(3);
+                        keyboardView.invalidateAllKeys();
+                    }
                     break;
+
                 default:
+                    boolean dirty = red || blue || caps;
+
+                    // richtige Ebene auswaehlen
                     char realKey = KeyMapping.LEVEL1.get(primaryCode);
-                    if(red){
+                    if(red)
                         realKey = KeyMapping.LEVEL2.get(primaryCode);
-                    }
-                    if(blue){
+                    if(blue)
                         realKey = KeyMapping.LEVEL3.get(primaryCode);
-                    }
+
+                    // Ebene auf 1 zuruecksetzen
                     red = false;
                     blue = false;
-                    ic.commitText(String.valueOf(realKey),1);
+                    keyboardView.highlightLevel(1);
+
+                    // String erstellen (GROSS/klein!)
+                    String text = String.valueOf(realKey);
+                    if (caps) {
+                        text = text.toUpperCase();
+                        caps = false;
+                        keyboard.setShifted(false);
+                    }
+
+                    ic.commitText(text, 1);
+
+                    if (dirty)
+                        keyboardView.invalidateAllKeys();
             }
         } else {
             // long press

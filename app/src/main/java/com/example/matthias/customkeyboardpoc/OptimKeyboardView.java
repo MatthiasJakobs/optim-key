@@ -22,6 +22,11 @@ public class OptimKeyboardView extends KeyboardView {
     private final int MARGIN = 20;
     private final Rect textBounds = new Rect();
 
+    private final int FONTSIZE_LARGE = 90;
+    private final int FONTSIZE_SMALL = 60;
+
+    private int highlightedLevel = 1;
+
     public OptimKeyboardView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -51,35 +56,53 @@ public class OptimKeyboardView extends KeyboardView {
                 h = key.height - 2*MARGIN;
 
                 // Level 1
-                paint.setTextSize(90);
+                paint.setTextSize(highlightedLevel == 1 ? FONTSIZE_LARGE : FONTSIZE_SMALL);
                 paint.setColor(ContextCompat.getColor(getContext(), R.color.keyLevel1));
                 text = String.valueOf(KeyMapping.LEVEL1.get(key.codes[0]));
+                if (this.isShifted())
+                    text = text.toUpperCase();
                 paint.getTextBounds(text, 0, text.length(), textBounds);
                 canvas.drawText(text, key.x + MARGIN + w/4 - textBounds.exactCenterX(),
                         key.y + MARGIN + h/4 - textBounds.exactCenterY(), paint);
 
                 // Level 2
-                paint.setTextSize(50);
+                paint.setTextSize(highlightedLevel == 2 ? FONTSIZE_LARGE : FONTSIZE_SMALL);
                 paint.setColor(ContextCompat.getColor(getContext(), R.color.keyLevel2));
                 text = String.valueOf(KeyMapping.LEVEL2.get(key.codes[0]));
+                if (this.isShifted())
+                    text = text.toUpperCase();
                 paint.getTextBounds(text, 0, text.length(), textBounds);
                 canvas.drawText(text, key.x + MARGIN + w/4 - textBounds.exactCenterX(),
                         key.y + MARGIN + 3*h/4 - textBounds.exactCenterY(), paint);
 
                 // Level 3
+                paint.setTextSize(highlightedLevel == 3 ? FONTSIZE_LARGE : FONTSIZE_SMALL);
                 paint.setColor(ContextCompat.getColor(getContext(), R.color.keyLevel3));
                 text = String.valueOf(KeyMapping.LEVEL3.get(key.codes[0]));
+                if (this.isShifted())
+                    text = text.toUpperCase();
                 paint.getTextBounds(text, 0, text.length(), textBounds);
                 canvas.drawText(text, key.x + MARGIN + 3*w/4 - textBounds.exactCenterX(),
                         key.y + MARGIN + 3*h/4 - textBounds.exactCenterY(), paint);
 
                 // Level 4
+                paint.setTextSize(highlightedLevel == 4 ? FONTSIZE_LARGE : FONTSIZE_SMALL);
                 paint.setColor(ContextCompat.getColor(getContext(), R.color.keyLevel4));
                 text = String.valueOf(KeyMapping.LEVEL4.get(key.codes[0]));
+                if (this.isShifted())
+                    text = text.toUpperCase();
                 paint.getTextBounds(text, 0, text.length(), textBounds);
                 canvas.drawText(text, key.x + MARGIN + 3*w/4 - textBounds.exactCenterX(),
                         key.y + MARGIN + h/4 - textBounds.exactCenterY(), paint);
             }
+        }
+    }
+
+    public void highlightLevel(int layer) {
+        if (layer >= 0 && layer <= 4) {
+            highlightedLevel = layer;
+        } else {
+            highlightedLevel = 1;
         }
     }
 }
